@@ -1,10 +1,17 @@
 import { Router } from "express";
+import multer from "multer";
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
+import FileController from "./app/controllers/FileController";
+
+// multer
+import multerConfig from "./config/multer";
 
 import authMiddleware from "./app/middlewars/auth";
 
 const routes = new Router();
+
+const upload = multer(multerConfig);
 
 // routes.get("/", async (req, res) => {
 //   const user = await User.create({
@@ -21,6 +28,12 @@ routes.post("/sessions", SessionController.store);
 routes.use(authMiddleware);
 
 routes.put("/users", UserController.updated);
+
+routes.post("/files", upload.single("file"), FileController.store);
+// routes.post("/files", upload.single("file"), async (req, res) => {
+//   console.log("req", req.file);
+//   return res.json({ ok: true });
+// });
 
 export default routes;
 // yarn eslint --fix src --ext .js
