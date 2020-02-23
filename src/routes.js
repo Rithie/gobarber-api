@@ -8,6 +8,7 @@ import FileController from "./app/controllers/FileController";
 import multerConfig from "./config/multer";
 
 import authMiddleware from "./app/middlewars/auth";
+import ProviderController from "./app/controllers/ProviderController";
 
 const routes = new Router();
 
@@ -30,10 +31,7 @@ routes.use(authMiddleware);
 routes.put("/users", UserController.updated);
 
 routes.post("/files", upload.single("file"), FileController.store);
-// routes.post("/files", upload.single("file"), async (req, res) => {
-//   console.log("req", req.file);
-//   return res.json({ ok: true });
-// });
+routes.get("/providers", ProviderController.index);
 
 export default routes;
 // yarn eslint --fix src --ext .js
