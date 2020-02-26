@@ -9,6 +9,7 @@ import multerConfig from "./config/multer";
 
 import authMiddleware from "./app/middlewars/auth";
 import ProviderController from "./app/controllers/ProviderController";
+import AppointmentController from "./app/controllers/AppointmentController";
 
 const routes = new Router();
 
@@ -32,6 +33,9 @@ routes.put("/users", UserController.updated);
 
 routes.post("/files", upload.single("file"), FileController.store);
 routes.get("/providers", ProviderController.index);
+
+routes.post("/appointments", AppointmentController.store);
+routes.get("/appointments", AppointmentController.index);
 
 export default routes;
 // yarn eslint --fix src --ext .js
