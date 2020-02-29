@@ -54,7 +54,17 @@ class AppointmentController {
     */
 
     const isProvider = await User.findOne({
-      where: { id: provider_id, provider: true }
+      where: {
+        id: provider_id,
+        [Op.and]: [
+          {
+            id: {
+              [Op.ne]: req.userId
+            }
+          }
+        ],
+        provider: true
+      }
     });
 
     if (!isProvider) {
