@@ -1,0 +1,10 @@
+# para rodar o projeto em modo dev
+yarn dev
+
+# para rodar a fila
+
+yarn queue
+
+# para subir o banco de dados no docker
+
+docker start database
