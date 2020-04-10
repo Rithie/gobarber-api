@@ -30,14 +30,15 @@ class SessionControler {
       });
     }
 
-    const { id, name, avatar } = user;
+    const { id, name, avatar, provider } = user;
 
     return res.json({
       user: {
         id,
         name,
         email,
-        avatar
+        avatar,
+        provider
       },
       token: jwt.sign({ id }, "5f61738afb2b32f0ef4e2e58d00a7789", {
         expiresIn: "7d"
