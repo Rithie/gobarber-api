@@ -2,6 +2,10 @@ import { Router } from "express";
 import multer from "multer";
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
+
+import ForgotPasswordController from "./app/controllers/Auth/ForgotPasswordController";
+import ResetTokenController from "./app/controllers/Auth/ResetTokenController";
+
 import FileController from "./app/controllers/FileController";
 import ScheduleController from "./app/controllers/ScheduleController";
 
@@ -29,6 +33,8 @@ const upload = multer(multerConfig);
 
 routes.post("/users", UserController.store);
 routes.post("/sessions", SessionController.store);
+routes.post("/forgot", ForgotPasswordController.index);
+routes.get("/reset/:token", ResetTokenController.index);
 
 routes.use(authMiddleware);
 

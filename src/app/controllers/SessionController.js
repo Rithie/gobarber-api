@@ -1,3 +1,4 @@
+import "dotenv/config";
 import jwt from "jsonwebtoken";
 
 import User from "../models/User";
@@ -40,7 +41,7 @@ class SessionControler {
         avatar,
         provider
       },
-      token: jwt.sign({ id }, "5f61738afb2b32f0ef4e2e58d00a7789", {
+      token: jwt.sign({ id }, process.env.APP_SECRET, {
         expiresIn: "7d"
       })
     });
