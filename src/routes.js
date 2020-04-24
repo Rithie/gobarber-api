@@ -22,14 +22,14 @@ const routes = new Router();
 
 const upload = multer(multerConfig);
 
-// routes.get("/", async (req, res) => {
-//   const user = await User.create({
-//     name: "Euler Alvarenga",
-//     email: "euler@mail.com",
-//     password_hash: "123456"
-//   });
-//   res.json(user);
-// });
+routes.get("/ping", async (req, res) => {
+  // const user = await User.create({
+  //   name: "Euler Alvarenga",
+  //   email: "euler@mail.com",
+  //   password_hash: "123456"
+  // });
+  res.json({ status: "ok" });
+});
 
 routes.post("/users", UserController.store);
 routes.post("/sessions", SessionController.store);
