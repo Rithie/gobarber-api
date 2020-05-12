@@ -7,11 +7,21 @@ class User extends Model {
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
+        phone: Sequelize.STRING,
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
         reset_password_token: Sequelize.STRING,
-        reset_password_expires: Sequelize.DATE
+        reset_password_expires: Sequelize.DATE,
+        is_signup_done: Sequelize.BOOLEAN,
+        signup_step: Sequelize.STRING,
+        accepted_terms: Sequelize.BOOLEAN,
+        user_level: Sequelize.STRING,
+        job_title: Sequelize.STRING,
+        bio: Sequelize.STRING,
+        birthdate: Sequelize.STRING,
+        profile_photo_path: Sequelize.STRING,
+        role: Sequelize.STRING
       },
       {
         sequelize

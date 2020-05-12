@@ -1,7 +1,9 @@
 import { Router } from "express";
 import multer from "multer";
+
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
+import FinishSignupController from "./app/controllers/FinishSignupController";
 
 import ForgotPasswordController from "./app/controllers/Auth/ForgotPasswordController";
 import ResetTokenController from "./app/controllers/Auth/ResetTokenController";
@@ -39,6 +41,7 @@ routes.get("/reset/:token", ResetTokenController.index);
 routes.use(authMiddleware);
 
 routes.put("/users", UserController.updated);
+routes.put("/completeSignup", FinishSignupController.update);
 
 routes.post("/files", upload.single("file"), FileController.store);
 routes.get("/providers", ProviderController.index);
