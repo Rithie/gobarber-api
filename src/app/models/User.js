@@ -11,6 +11,7 @@ class User extends Model {
         password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
         provider: Sequelize.BOOLEAN,
+        short_id: Sequelize.STRING,
         reset_password_token: Sequelize.STRING,
         reset_password_expires: Sequelize.DATE,
         is_signup_done: Sequelize.BOOLEAN,
