@@ -20,6 +20,7 @@ import AppointmentController from "./app/controllers/AppointmentController";
 import NotificationController from "./app/controllers/NotificationController";
 import AvailableController from "./app/controllers/AvailableController";
 import ResetByEmailCodeController from "./app/controllers/Auth/ResetByEmailCodeController";
+import CheckEmailCodeController from "./app/controllers/Auth/CheckEmailCodeController";
 
 const routes = new Router();
 
@@ -38,7 +39,8 @@ routes.post("/users", UserController.store);
 routes.post("/sessions", SessionController.store);
 routes.post("/forgot", ForgotPasswordController.index);
 routes.get("/reset/:token", ResetTokenController.index);
-routes.get("/resetcode/:token", ResetByEmailCodeController.index);
+routes.post("/resetcode/:token", ResetByEmailCodeController.index);
+routes.get("/checkcode/:token", CheckEmailCodeController.index);
 
 routes.use(authMiddleware);
 
