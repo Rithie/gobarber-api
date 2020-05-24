@@ -32,7 +32,7 @@ routes.get("/ping", async (req, res) => {
   //   email: "euler@mail.com",
   //   password_hash: "123456"
   // });
-  res.json({ status: "ok" });
+  res.json({ status: "ping ok" });
 });
 
 routes.post("/users", UserController.store);
