@@ -1,7 +1,9 @@
 import { Router } from "express";
 import multer from "multer";
+
 import UserController from "./app/controllers/UserController";
 import SessionController from "./app/controllers/SessionController";
+import FinishSignupController from "./app/controllers/FinishSignupController";
 
 import ForgotPasswordController from "./app/controllers/Auth/ForgotPasswordController";
 import ResetTokenController from "./app/controllers/Auth/ResetTokenController";
@@ -17,6 +19,9 @@ import ProviderController from "./app/controllers/ProviderController";
 import AppointmentController from "./app/controllers/AppointmentController";
 import NotificationController from "./app/controllers/NotificationController";
 import AvailableController from "./app/controllers/AvailableController";
+import ResetByEmailCodeController from "./app/controllers/Auth/ResetByEmailCodeController";
+import CheckEmailCodeController from "./app/controllers/Auth/CheckEmailCodeController";
+import FormSurveyController from "./app/controllers/FormSurveyController";
 
 const routes = new Router();
 
@@ -35,10 +40,13 @@ routes.post("/users", UserController.store);
 routes.post("/sessions", SessionController.store);
 routes.post("/forgot", ForgotPasswordController.index);
 routes.get("/reset/:token", ResetTokenController.index);
+routes.post("/resetcode/:token", ResetByEmailCodeController.index);
+routes.get("/checkcode/:token", CheckEmailCodeController.index);
 
 routes.use(authMiddleware);
 
 routes.put("/users", UserController.updated);
+routes.put("/completeSignup", FinishSignupController.update);
 
 routes.post("/files", upload.single("file"), FileController.store);
 routes.get("/providers", ProviderController.index);
@@ -52,6 +60,8 @@ routes.get("/schedule", ScheduleController.index);
 
 routes.get("/notifications", NotificationController.index);
 routes.put("/notifications/:id", NotificationController.update);
+
+routes.get("/survey", FormSurveyController.index);
 
 export default routes;
 // yarn eslint --fix src --ext .js

@@ -31,7 +31,17 @@ class SessionControler {
       });
     }
 
-    const { id, name, avatar, provider } = user;
+    const {
+      id,
+      name,
+      avatar,
+      provider,
+      is_signup_done,
+      signup_step,
+      role,
+      profile_photo_path,
+      bio
+    } = user;
 
     return res.json({
       user: {
@@ -39,7 +49,12 @@ class SessionControler {
         name,
         email,
         avatar,
-        provider
+        provider,
+        is_signup_done,
+        signup_step,
+        role,
+        profile_photo_path,
+        bio
       },
       token: jwt.sign({ id }, process.env.APP_SECRET, {
         expiresIn: "7d"

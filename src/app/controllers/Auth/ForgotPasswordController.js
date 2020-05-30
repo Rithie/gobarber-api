@@ -1,5 +1,6 @@
 import "dotenv/config";
 import jwt from "jsonwebtoken";
+import shortid from "shortid";
 import User from "../../models/User";
 
 import ForgotPasswordMail from "../../jobs/ForgotPaswordMail";
@@ -29,14 +30,16 @@ class ForgotPasswordController {
       { expiresIn: "1h" }
     );
 
+    const code = `e-${shortid.generate()}`;
     user.reset_password_token = token;
+    user.short_id = code;
     user.reset_password_expires = Date.now() + 3600000; // 1 hour
 
     await user.save();
 
     const { hostname } = req;
 
-    await Queue.add(ForgotPasswordMail.key, { user, hostname, token });
+    await Queue.add(ForgotPasswordMail.key, { user, hostname, token, code });
 
     return res.status(200).json({
       success_message: "Your email has been sent. check your inbox"
