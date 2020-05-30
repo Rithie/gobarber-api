@@ -39,7 +39,8 @@ class SessionControler {
       is_signup_done,
       signup_step,
       role,
-      profile_photo_path
+      profile_photo_path,
+      bio
     } = user;
 
     return res.json({
@@ -52,7 +53,8 @@ class SessionControler {
         is_signup_done,
         signup_step,
         role,
-        profile_photo_path
+        profile_photo_path,
+        bio
       },
       token: jwt.sign({ id }, process.env.APP_SECRET, {
         expiresIn: "7d"

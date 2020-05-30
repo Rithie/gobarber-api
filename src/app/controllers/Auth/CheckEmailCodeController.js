@@ -16,7 +16,7 @@ class CheckEmailCodeController {
 
     if (!user) {
       return res.status(422).json({
-        error: "Password reset token is invalid or has expired"
+        error: "Password reset token is invalid or has expired."
       });
     }
 
