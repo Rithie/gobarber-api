@@ -21,6 +21,7 @@ import NotificationController from "./app/controllers/NotificationController";
 import AvailableController from "./app/controllers/AvailableController";
 import ResetByEmailCodeController from "./app/controllers/Auth/ResetByEmailCodeController";
 import CheckEmailCodeController from "./app/controllers/Auth/CheckEmailCodeController";
+import FormSurveyController from "./app/controllers/FormSurveyController";
 
 const routes = new Router();
 
@@ -59,6 +60,8 @@ routes.get("/schedule", ScheduleController.index);
 
 routes.get("/notifications", NotificationController.index);
 routes.put("/notifications/:id", NotificationController.update);
+
+routes.get("/survey", FormSurveyController.index);
 
 export default routes;
 // yarn eslint --fix src --ext .js
