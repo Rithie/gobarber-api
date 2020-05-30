@@ -37,19 +37,10 @@ class Mail {
 
   sendMail(message) {
     // fecha conn após rodar
-    return this.transporter.sendMail(
-      {
-        ...mailConfig.default,
-        ...message
-      },
-      error => {
-        if (error) {
-          this.transporter.close();
-        } else {
-          this.transporter.close();
-        }
-      }
-    );
+    return this.transporter.sendMail({
+      ...mailConfig.default,
+      ...message
+    });
   }
 }
 
