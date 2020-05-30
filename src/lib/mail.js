@@ -36,10 +36,19 @@ class Mail {
   }
 
   sendMail(message) {
-    return this.transporter.sendMail({
-      ...mailConfig.default,
-      ...message
-    });
+    return this.transporter.sendMail(
+      {
+        ...mailConfig.default,
+        ...message
+      },
+      error => {
+        if (error) {
+          this.transporter.close();
+        } else {
+          this.transporter.close();
+        }
+      }
+    );
   }
 }
 
