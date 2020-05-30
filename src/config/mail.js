@@ -7,6 +7,6 @@ export default {
     pass: process.env.MAIL_PASS
   },
   default: {
-    from: "Equipe Eleve <noreply@eleveapp.com>"
+    from: "Team Eleve <noreply@eleveapp.com>"
   }
 };
