@@ -30,6 +30,7 @@ class UserController {
     }
     const { id, name, email, provider } = await User.create(req.body);
 
+    // envia email
     await Queue.add(AccountCreatedMail.key, { email });
 
     return res.json({
