@@ -2,9 +2,15 @@ import Bee from "bee-queue";
 import CancellationMail from "../app/jobs/CancellationMail";
 import ForgotPasswordMail from "../app/jobs/ForgotPaswordMail";
 import ResetPasswordMail from "../app/jobs/ResetPasswordMail";
+import AccountCreatedMAil from "../app/jobs/AccountCreatedMail";
 import redisConfig from "../config/redis";
 
-const jobs = [CancellationMail, ForgotPasswordMail, ResetPasswordMail];
+const jobs = [
+  CancellationMail,
+  ForgotPasswordMail,
+  ResetPasswordMail,
+  AccountCreatedMAil
+];
 
 class Queue {
   constructor() {

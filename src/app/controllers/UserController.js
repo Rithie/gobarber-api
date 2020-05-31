@@ -2,6 +2,9 @@ import * as Yup from "yup";
 import User from "../models/User";
 import File from "../models/File";
 
+import AccountCreatedMail from "../jobs/AccountCreatedMail";
+import Queue from "../../lib/Queue";
+
 class UserController {
   async store(req, res) {
     const schema = Yup.object().shape({
@@ -26,6 +29,8 @@ class UserController {
       return res.status(400).json({ error: "user already exist" });
     }
     const { id, name, email, provider } = await User.create(req.body);
+
+    await Queue.add(AccountCreatedMail.key, { email });
 
     return res.json({
       id,
