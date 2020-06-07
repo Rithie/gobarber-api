@@ -22,6 +22,7 @@ import AvailableController from "./app/controllers/AvailableController";
 import ResetByEmailCodeController from "./app/controllers/Auth/ResetByEmailCodeController";
 import CheckEmailCodeController from "./app/controllers/Auth/CheckEmailCodeController";
 import FormSurveyController from "./app/controllers/FormSurveyController";
+import LoadResourcesController from "./app/controllers/Auth/LoadResourcesController";
 
 const routes = new Router();
 
@@ -47,6 +48,7 @@ routes.use(authMiddleware);
 
 routes.put("/users", UserController.updated);
 routes.put("/completeSignup", FinishSignupController.update);
+routes.get("/myresources", LoadResourcesController.index);
 
 routes.post("/files", upload.single("file"), FileController.store);
 routes.get("/providers", ProviderController.index);

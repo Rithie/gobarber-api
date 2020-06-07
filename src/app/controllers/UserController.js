@@ -17,6 +17,7 @@ class UserController {
       password: Yup.string()
         .required()
         .min(6)
+        .max(34)
     });
 
     if (!(await schema.isValid(req.body))) {
