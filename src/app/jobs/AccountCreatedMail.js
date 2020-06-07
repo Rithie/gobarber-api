@@ -9,7 +9,7 @@ class AccountCreatedMail {
     const { email } = data;
 
     await Mail.sendMail({
-      to: `<${email}>`,
+      to: `New user <${email}>`,
       subject: "Welcome to Eleve App",
       template: "greetings",
       context: {
